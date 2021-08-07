@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_flutter/next_file.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,36 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('ヘッダー'),
-          actions: [
-            Icon(Icons.add),
-          ],
-        ),
-        body: Center(
-          child: Container(
-            color: Colors.white,
-            width: 440,
-            child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Flutterで',
-                style: TextStyle(fontSize: 40),
-              ),
-              Text(
-                'アプリ開発📱',
-                style: TextStyle(fontSize: 40),
-              ),
-            ],
-            ),
-            )
-          )
-        ),
-      )
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -66,20 +38,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('ヘッダー'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'hello world',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NextPage()),
+            );
+          },
+          child: Text('次へ'),
         ),
       ),
       floatingActionButton: FloatingActionButton(
