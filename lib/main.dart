@@ -43,15 +43,24 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
-            Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NextPage('パラメータを次の画面に渡すことができる')),
-                );
-              },
-              child: Text('次へ'),
+            Text(
+              'top-contents',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.green,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                decoration: TextDecoration.overline,
+              ),
+            ),
+            Text(
+              'bottom-contents',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.green,
+                fontWeight: FontWeight.w700,
+                decoration: TextDecoration.overline,
+              ),
             ),
           ],
         )
