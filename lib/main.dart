@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sample_flutter/next_file.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,6 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   final myFocusNode = FocusNode();
+  final myController = TextEditingController();
+  String name = "aa";
 
   @override
   Widget build(BuildContext context) {
@@ -47,19 +48,26 @@ class _MyHomePageState extends State<MyHomePage> {
         width: double.infinity,
         child: Column(
           children: [
-            TextField(),
             TextField(
               decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Enter a search term',
+                hintText: 'メールアドレス',
               ),
-              focusNode: myFocusNode,
+              controller: myController,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'パスワード',
+              ),
+              onChanged: (text) {
+                name = text;
+                print(name);
+              }
             ),
             ElevatedButton(
               onPressed: () {
-                myFocusNode.requestFocus();
+                print(myController.text);
               },
-              child: Text('on focus'),
+              child: Text('新規登録'),
             ),
           ]
         )
