@@ -33,9 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  final myFocusNode = FocusNode();
-  final myController = TextEditingController();
-  String name = "aa";
+  final items = List<String>.generate(10, (i) => "Item $i");
 
   @override
   Widget build(BuildContext context) {
@@ -46,31 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         padding: const EdgeInsets.all(15.0),
         width: double.infinity,
-        child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'メールアドレス',
-              ),
-              controller: myController,
-            ),
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'パスワード',
-              ),
-              onChanged: (text) {
-                name = text;
-                print(name);
-              }
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print(myController.text);
-              },
-              child: Text('新規登録'),
-            ),
-          ]
-        )
+        child: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index){
+            return ListTile(
+              title: Text('${items[index]}'),
+            );
+          }
+        ),
       ),
     );
   }
