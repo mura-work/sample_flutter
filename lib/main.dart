@@ -43,25 +43,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
-            Text(
-              'top-contents',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.green,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-                decoration: TextDecoration.overline,
+            Container(
+              width: double.infinity,
+              child: Text(
+                'contents',
+                textAlign: TextAlign.right
               ),
             ),
-            Text(
-              'bottom-contents',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.green,
-                fontWeight: FontWeight.w700,
-                decoration: TextDecoration.overline,
-              ),
-            ),
+            Text('footer'),
           ],
         )
       ),
