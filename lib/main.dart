@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_flutter/todo_add_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,11 +8,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Sample',  // アプリ名
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: TodoListPage(),
+    );
+  }
+}
+
+class TodoListPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ヘッダー'),
+      ),
+      body: Center(
+        child: Text('リスト一覧画面'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context){
+              return TodoAddPage();
+            }),
+          );
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
