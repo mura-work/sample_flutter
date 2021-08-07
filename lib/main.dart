@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sample_flutter/next_file.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,27 +33,25 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final items = List<String>.generate(10, (i) => "Item $i");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('ヘッダー'),
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => NextPage()),
+      body: Container(
+        padding: const EdgeInsets.all(15.0),
+        width: double.infinity,
+        child: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index){
+            return ListTile(
+              title: Text('${items[index]}'),
             );
-          },
-          child: Text('次へ'),
+          }
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
