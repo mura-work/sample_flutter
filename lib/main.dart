@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => NextPage()),
+              MaterialPageRoute(builder: (context) => NextPage('パラメータを次の画面に渡すことができる')),
             );
           },
           child: Text('次へ'),
