@@ -41,20 +41,20 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('ヘッダー'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => NextPage('パラメータを次の画面に渡すことができる')),
-            );
-          },
-          child: Text('次へ'),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Column(
+          children: [
+            Image.network('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NextPage('パラメータを次の画面に渡すことができる')),
+                );
+              },
+              child: Text('次へ'),
+            ),
+          ],
+        )
       ),
     );
   }
