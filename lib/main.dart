@@ -34,24 +34,34 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  final myFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('ヘッダー'),
       ),
-      body: Center(
+      body: Container(
+        padding: const EdgeInsets.all(15.0),
+        width: double.infinity,
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              child: Text(
-                'contents',
-                textAlign: TextAlign.right
+            TextField(),
+            TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Enter a search term',
               ),
+              focusNode: myFocusNode,
             ),
-            Text('footer'),
-          ],
+            ElevatedButton(
+              onPressed: () {
+                myFocusNode.requestFocus();
+              },
+              child: Text('on focus'),
+            ),
+          ]
         )
       ),
     );
