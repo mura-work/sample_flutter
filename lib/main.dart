@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_flutter/todo_add_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,13 +8,57 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Sample',  // アプリ名
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: TodoListPage(),
     );
   }
+}
+
+class _TodoListPageState extends State<TodoListPage> {
+  List<String> todoList = [];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('リスト一覧'),
+      ),
+      body: ListView.builder(
+        itemCount: todoList.length,
+        itemBuilder: (context, index){
+          return Card(
+            child: ListTile(
+              title: Text(todoList[index]),
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final newListText = await Navigator.of(context).push(
+            MaterialPageRoute(builder: (context){
+              return TodoAddPage();
+            }),
+          );
+          if (newListText != null){
+            setState(() {
+              todoList.add(newListText);
+            });
+          }
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class TodoListPage extends StatefulWidget {
+  @override
+  _TodoListPageState createState() => _TodoListPageState();
 }
 
 class MyHomePage extends StatefulWidget {
