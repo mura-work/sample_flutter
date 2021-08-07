@@ -18,49 +18,47 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class TodoListPage extends StatelessWidget {
+class _TodoListPageState extends State<TodoListPage> {
+  List<String> todoList = [];
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('リスト一覧'),
       ),
-      body: ListView(
-        children: <Widget>[
-          Card(
+      body: ListView.builder(
+        itemCount: todoList.length,
+        itemBuilder: (context, index){
+          return Card(
             child: ListTile(
-              title: Text('リスト1'),
+              title: Text(todoList[index]),
             ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text('リスト2'),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text('リスト3'),
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text('リスト4'),
-            ),
-          ),
-        ],
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
+        onPressed: () async {
+          final newListText = await Navigator.of(context).push(
             MaterialPageRoute(builder: (context){
               return TodoAddPage();
             }),
           );
+          if (newListText != null){
+            setState(() {
+              todoList.add(newListText);
+            });
+          }
         },
         child: Icon(Icons.add),
       ),
     );
   }
+}
+
+class TodoListPage extends StatefulWidget {
+  @override
+  _TodoListPageState createState() => _TodoListPageState();
 }
 
 class MyHomePage extends StatefulWidget {
