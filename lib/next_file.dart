@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class NextPage extends StatelessWidget {
   NextPage(this.name);  // イニシャライザ
   String name;  // 変数
